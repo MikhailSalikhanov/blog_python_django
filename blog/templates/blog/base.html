@@ -1,0 +1,29 @@
+{% load static %}
+<html>
+
+
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+    <title>Django blog</title>
+</head>
+
+<body>
+    <div>
+        <h1 class="text-5xl text-center py-10 bg-orange-200"><a href="/" class="hover:text-red-700">Django Blog</a>
+        </h1>
+    </div>
+    <div class="flex justify-center items-center">
+        <a href="{% url 'post_new' %}"
+            class="border-2 border-black bg-blue-300 rounded px-6 py-2 mt-6 mx-auto hover:text-red-700">
+            <span class="">Add post</span>
+        </a>
+    </div>
+    {% block content %}
+    {% endblock %}
+
+
+
+</body>
+
+</html>

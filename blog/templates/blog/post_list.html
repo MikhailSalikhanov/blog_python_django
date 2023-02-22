@@ -1,25 +1,16 @@
-{% load static %}
-<html>
+{% extends 'blog/base.html' %}
 
 
-<head>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
-    <title>Django blog</title>
-</head>
-
-<body>
-    <div>
-        <h1 class="text-5xl text-center pt-10"><a href="/">Django Blog</a></h1>
+{% block content %}
+{% for post in posts %}
+<div class="my-10 px-10">
+    <p class="text-red-900">published: {{ post.published_date }}</p>
+    <h2 class="text-3xl">
+        <a href="{% url 'post_detail' pk=post.pk %}" class="hover:text-red-700">{{ post.title }}</a>
+    </h2>
+    <div class="max-h-36" style="overflow: hidden;">
+        <p>{{post.text|linebreaksbr }}</p>
     </div>
-
-    {% for post in posts %}
-    <div class="my-10 px-10">
-        <p class="text-red-900">published: {{ post.published_date }}</p>
-        <h2 class="text-3xl"><a href="">{{ post.title }}</a></h2>
-        <p>{{ post.text|linebreaksbr }}</p>
-    </div>
-    {% endfor %}
-</body>
-
-</html>
+</div>
+{% endfor %}
+{% endblock %}

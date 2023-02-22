@@ -1,0 +1,22 @@
+{% extends 'blog/base.html' %}
+
+
+{% block content %}
+<div class="my-10 px-10">
+    {% if post.published_date %}
+    <p class="">published: {{ post.published_date }}</p>
+    {% endif %}
+    <h2 class="text-3xl text-center bg-red-300">
+        <a href="{% url 'post_detail' pk=post.pk %}">
+            {{ post.title }}
+        </a>
+    </h2>
+    <p>{{ post.text|linebreaksbr }}</p>
+</div>
+<div class="flex justify-center items-center">
+    <a class="border-2 border-black bg-blue-300 rounded px-6 py-2 mt-6 mx-auto hover:text-red-700"
+        href="{% url 'post_edit' pk=post.pk %}"><span class="">EDIT POST</span>
+    </a>
+</div>
+
+{% endblock %}
